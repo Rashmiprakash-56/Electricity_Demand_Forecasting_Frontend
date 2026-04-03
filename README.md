@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# Electricity Demand Forecasting - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend application for the **Electricity Demand Forecasting** project, a sophisticated machine learning web application. It is designed to provide an interactive dashboard for visualizing energy datasets, commanding predictive model training, predicting hourly electricity demand, and explaining AI decisions using SHAP.
 
-Currently, two official plugins are available:
+## Key Features
+- **Secure Dashboard:** JWT-based authentication to restrict access to authorized personnel.
+- **Dataset Exploration:** View dataset statistics, data dictionary, and underlying feature characteristics for the Spanish Energy dataset.
+- **Interactive Model Training:** Control XGBoost hyperparameters (`eta`, `max_depth`, `subsample`, etc.) and launch Optuna background training tasks directly from the UI. Training progress is fetched and displayed via real-time polling.
+- **Demand Prediction:** Predict the upcoming 24 hours of electricity load based on target weather and generation features, calculating MAPE against actuals when available.
+- **AI Interpretability (SHAP):** Interactive Local Waterfall charts let users select a specific hour and see exactly how temperature, wind speed, etc. impacted the final megawatt prediction.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technology Stack
+- **Framework:** React 19, TypeScript, Vite
+- **UI Library:** Material UI (MUI) v7
+- **State Management:** Zustand (`useAuthStore`, `usePredictionStore`, `useTrainingStore`)
+- **Routing:** React Router DOM v7
+- **Visualization:** Plotly.js, React-Plotly, Recharts
 
-## React Compiler
+## Getting Started
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### Prerequisites
+- Node.js (v18+)
+- npm or yarn
 
-## Expanding the ESLint configuration
+### Installation
+1. Navigate to the `frontend` directory.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Running the Development Server
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Build for Production
+```bash
+npm run build
 ```
+
+This application integrates seamlessly with the FastAPI backend. Ensure the backend server is running and the `.env` variables (such as `VITE_API_URL`) are configured correctly.
