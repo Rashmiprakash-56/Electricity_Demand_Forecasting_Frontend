@@ -3,10 +3,10 @@ import DashboardComponent from '../components/dashboard/Dashboard'
 
 const Dashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6' }}>
       <DashboardComponent />
     </div>
   );
 };
 
-export default Dashboard;
+export default Dashboard;

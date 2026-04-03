@@ -11,15 +11,16 @@ const ShapAnalysis = () => {
   const navigate = useNavigate()
 
   return (
-    <Box sx={{ p: 1 }}>
+    <Box sx={{ p: { xs: 1, sm: 2 } }}>
       {/* Page Title */}
         <Stack
-          direction="row"
-          alignItems="center"
+          direction={{ xs: 'column', sm: 'row' }}
+          alignItems={{ xs: 'flex-start', sm: 'center' }}
           justifyContent="space-between"
+          spacing={1}
           mb={2}
         >
-          <Typography variant="h5" fontWeight={600}>
+          <Typography variant="h5" fontWeight={600} sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
             SHAP Analysis
           </Typography>
 
@@ -42,7 +43,7 @@ const ShapAnalysis = () => {
               Global Feature Importance
             </Typography>
 
-            <Box sx={{ width: '100%', height: 500 }}>
+            <Box sx={{ width: '100%', height: { xs: 300, md: 500 } }}>
               <ShapGlobalChart data={globalShap} />
             </Box>
           </CardContent>
@@ -109,7 +110,7 @@ const ShapAnalysis = () => {
             </Typography>
 
             {selectedHour ? (
-              <Box sx={{ width: '100%', height: 400 }}>
+              <Box sx={{ width: '100%', height: { xs: 280, md: 400 } }}>
                 <ShapWaterfallChart
                   hourData={localShap[selectedHour-1]}
                 />

@@ -295,26 +295,26 @@ const DatasetOverviewPage: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: '#f5f7fa', py: 4 }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: '#f5f7fa', py: { xs: 2, md: 4 } }}>
       <Container maxWidth="lg">
         {/* Header */}
         <Paper
           elevation={0}
           sx={{
-            p: 4,
-            mb: 4,
+            p: { xs: 2.5, md: 4 },
+            mb: { xs: 3, md: 4 },
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             color: 'white',
             borderRadius: 2,
           }}
         >
-          <Stack direction="row" spacing={2} alignItems="center" mb={2}>
-            <DatasetIcon sx={{ fontSize: 40 }} />
+          <Stack direction="row" spacing={{ xs: 1.5, md: 2 }} alignItems="center" mb={2}>
+            <DatasetIcon sx={{ fontSize: { xs: 28, md: 40 } }} />
             <Box>
-              <Typography variant="h4" fontWeight="bold">
+              <Typography variant="h4" fontWeight="bold" sx={{ fontSize: { xs: '1.3rem', md: '2rem' } }}>
                 Dataset Overview
               </Typography>
-              <Typography variant="body1" sx={{ opacity: 0.9, mt: 0.5 }}>
+              <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.5, fontSize: { xs: '0.75rem', md: '0.875rem' } }}>
                 Hourly Energy Consumption, Generation, Prices & Weather
               </Typography>
             </Box>
@@ -323,7 +323,7 @@ const DatasetOverviewPage: React.FC = () => {
             href="https://www.kaggle.com/datasets/nicholasjhana/energy-consumption-generation-prices-and-weather"
             target="_blank"
             rel="noopener"
-            sx={{ color: 'white', textDecoration: 'underline' }}
+            sx={{ color: 'white', textDecoration: 'underline', fontSize: { xs: '0.8rem', md: '1rem' } }}
           >
             View on Kaggle
           </Link>
@@ -449,16 +449,16 @@ const DatasetOverviewPage: React.FC = () => {
                       borderColor: 'primary.main',
                     }}
                   >
-                    <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
+                    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 0.5, sm: 2 }} alignItems={{ sm: 'center' }} flexWrap="wrap">
                       <Typography
                         variant="body2"
                         fontWeight="600"
-                        sx={{ minWidth: '250px', fontFamily: 'monospace' }}
+                        sx={{ minWidth: { xs: 'auto', sm: '250px' }, fontFamily: 'monospace', fontSize: { xs: '0.75rem', sm: '0.875rem' }, wordBreak: 'break-word' }}
                       >
                         {column.name}
                       </Typography>
                       <Chip label={column.type} size="small" color="primary" variant="outlined" />
-                      <Typography variant="body2" color="text.secondary" sx={{ flex: 1 }}>
+                      <Typography variant="body2" color="text.secondary" sx={{ flex: 1, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                         {column.description}
                       </Typography>
                     </Stack>
